@@ -53,6 +53,46 @@ app.post("/api/teachers", async (req, res) => {
     }
 });
 
+app.get("/api/user/:id", async(req,res)=>{
+    try {
+        const users= await User.findById(req.params.id);
+        res.status(200).json(users)
+    } catch (error) {
+        res.status(400).json(error)
+    }
+})
+app.get("/api/teachers", async(req,res)=>{
+    try {
+        const teachers= await Teachers.find();
+        res.status(200).json(teachers)
+    } catch (error) {
+        res.status(400).json(error)
+    }
+})
+
+app.put("/api/user/:id",async(req,res)=>{
+    try {
+        const updatedUser= await User.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            // {new:true}
+            {returnDocument:'after'})
+
+        res.status(200).json(updatedUser)
+    } catch (error) {
+        res.status(400).json(error)
+    }
+})
+
+app.delete("/api/user/:id", async(req,res)=>{
+    try {
+        const deleteUser = await User.findByIdAndDelete(req.params.id);
+        res.status(200).json(deleteUser)
+    } catch (error) {
+        res.status(400).json(error)
+    }
+})
+
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server Running on Port ${PORT}`);
