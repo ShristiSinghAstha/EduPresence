@@ -1,6 +1,6 @@
 const mongoose=require('mongoose');
 
-const StudentSchema=new mongoose.Schema({
+const TeacherSchema=new mongoose.Schema({
     name:{
         type:String,
         required:true
@@ -13,7 +13,13 @@ const StudentSchema=new mongoose.Schema({
     password:{
         type: String,
         required:true
+    },
+    role:{
+        type:String,
+        roles:["teacher","admin","HOD","principal"],
+        default:"teacher"
     }
 },{timestamps:true})
 
-module.exports=mongoose.model('Student',StudentSchema);
+module.exports=mongoose.model('Teacher',TeacherSchema);
+
