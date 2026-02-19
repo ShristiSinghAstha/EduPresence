@@ -194,7 +194,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const User = require("./Models/StudentSchema");
-const Teachers = require("./Models/TeacherSchema");
+const Teachers = require("./Models/ProjectSchema");
 const MarksSchema = require("./Models/MarksSchema");
 const Users = require("./Models/UserSchema");
 const jwt = require("jsonwebtoken");
@@ -213,7 +213,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/MernStack")
 });
 
 
-/* ================= USER ROUTES ================= */
+// USER ROUTES
 
 app.post("/api/user", async (req, res) => {
     try {
@@ -256,7 +256,7 @@ app.delete("/api/user/:id", async (req, res) => {
 });
 
 
-/* ================= TEACHER ROUTES ================= */
+//TEACHER ROUTES 
 
 app.post("/api/teachers", async (req, res) => {
     try {
@@ -277,7 +277,7 @@ app.get("/api/teachers", async (req, res) => {
 });
 
 
-/* ================= STUDENTS & MARKS ================= */
+//STUDENTS & MARKS 
 
 app.post("/api/students", async (req, res) => {
     try {
@@ -304,42 +304,10 @@ app.post("/api/marks", async (req, res) => {
     }
 });
 
-app.get("/api/students/:id", async (req, res) => {
-    try {
-        const student = await User.findById(req.params.id);
-        const marks = await MarksSchema.findOne({ studentId: req.params.id });
-
-        res.status(200).json({ student, marks });
-    } catch (error) {
-        res.status(400).json({ success: false, message: error.message });
-    }
-});
-
-
-/* ================= JWT MIDDLEWARE ================= */
-
-// const verifyToken = (req, res, next) => {
-//     const authHeader = req.headers.authorization;
-
-//     if (!authHeader || !authHeader.startsWith("Bearer ")) {
-//         return res.status(401).json({ message: "Unauthorized - No Token" });
-//     }
-
-//     const token = authHeader.split(" ")[1];
-
-//     try {
-//         const payload = jwt.verify(token, "Astha");
-//         req.user = payload;   // contains id, email
-//         next();
-//     } catch (error) {
-//         return res.status(401).json({ message: "Invalid or expired token" });
-//     }
-// };
 
 
 
-
-/* ================= PROFILE (PROTECTED) ================= */
+// PROFILE (PROTECTED) 
 
 app.get("/api/profile", verifyToken, async (req, res) => {
     try {
@@ -352,7 +320,7 @@ app.get("/api/profile", verifyToken, async (req, res) => {
 });
 
 
-/* ================= SERVER ================= */
+// SERVER 
 
 const PORT = 3000;
 
