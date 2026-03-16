@@ -53,17 +53,13 @@ View subject-wise attendance
 
 🛠️ Technology Stack
 
-Frontend: 
-
-HTML
-
-CSS
+React.js
 
 JavaScript
 
 Backend:
 
-PHP / Node.js / Java (depending on implementation)
+Node.js 
 
 Database:
 
