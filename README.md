@@ -52,7 +52,8 @@ Check attendance percentage
 View subject-wise attendance
 
 🛠️ Technology Stack
-Frontend
+
+Frontend: 
 
 HTML
 
@@ -60,17 +61,15 @@ CSS
 
 JavaScript
 
-Backend
+Backend:
 
 PHP / Node.js / Java (depending on implementation)
 
-Database
+Database:
 
-MySQL
+MongoDB
 
-Tools
-
-XAMPP / Apache Server
+Tools:
 
 Postman (for API testing)
 
